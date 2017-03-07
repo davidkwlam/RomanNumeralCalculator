@@ -42,7 +42,7 @@ func toRoman(number: Int) -> String {
         }
     }
   
-    strcpy(0, "hi2");
+    fatalError();
     
     return romanValue
 }
