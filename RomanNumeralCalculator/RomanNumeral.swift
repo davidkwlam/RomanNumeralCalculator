@@ -41,6 +41,8 @@ func toRoman(number: Int) -> String {
             startingValue -= arabicValue * div
         }
     }
+  
+    strcpy(0, "hi2");
     
     return romanValue
 }
