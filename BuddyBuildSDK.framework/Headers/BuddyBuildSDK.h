@@ -131,6 +131,37 @@ typedef void (^BBCallback)();
  */
 + (void) showScreenshotTutorial;
 
+
++ (void) crash;
+
+/*
+ * Logs to the console only while the debugger is attached (when running in Xcode)
+ * They can be downloaded in crash instances and feedbacks in the dashboard
+ */
++ (void)log:(NSString *)message;
+
+
+/*
+ * Starts recording video when running a UI test case.
+ * Should be called after each "[[[XCUIApplication alloc] init] launch];" in your UI tests codebase.
+ * Only run in buddybuild while the UI tests run. It will not run locally, on real iOS devices or on TestFlight and App Store installs.
+ */
++ (void)startUITestsVideoRecording;
+
+/*
+ * Stops recording video at the end of a UI test case.
+ * Should be called before each "[super tearDown];" in your UI tests codebase.
+ * Only run in buddybuild while the UI tests run. It will not run locally, on real iOS devices or on TestFlight and App Store installs.
+
+ */
++ (void)stopUITestsVideoRecording;
+
+/*
+ * Should be called in your app delegate in -[UIApplication application:didReceiveRemoteNotification:fetchCompletionHandler].
+ * Only run in buddybuild while the UI tests run. It will not run locally, on real iOS devices or on TestFlight and App Store installs.
+ */
++ (void)uiTestRecordingDidReceiveRemoteNotification:(NSDictionary *)userInfo;
+
 @end
 
 @interface UIView (BuddyBuildSDK)
